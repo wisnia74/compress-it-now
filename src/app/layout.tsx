@@ -1,5 +1,8 @@
-import type { Metadata } from 'next';
 import './globals.css';
+
+import type { Metadata } from 'next';
+
+import { Navbar, ThemeProvider } from '@/components';
 
 export const metadata: Metadata = {
   title: 'compress-it-now',
@@ -7,16 +10,20 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => (
-  <html className='h-full' lang='en'>
+  <html className='h-full' lang='en' suppressHydrationWarning>
     <body className={`antialiased h-full m-0 p-0`}>
-      <div
-        className='grid h-full min-w-96 mx-auto min-[1800px]:max-w-[1536px] min-[1800px]:border-x border-x-black text-center'
-        style={{ gridTemplateAreas: `'header' 'main' 'footer'`, gridTemplateRows: 'auto 1fr auto' }}
-      >
-        <header className='min-[1800px]:border-b border-b-black'>HEADER</header>
-        <main>{children}</main>
-        <footer className='min-[1800px]:border-t border-t-black'>FOOTER</footer>
-      </div>
+      <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+        <div
+          className='grid h-full min-w-96 mx-auto min-[1800px]:max-w-[1536px] min-[1800px]:border-x'
+          style={{ gridTemplateAreas: `'header' 'main' 'footer'`, gridTemplateRows: 'auto 1fr auto' }}
+        >
+          <header className='min-[1800px]:border-b'>
+            <Navbar />
+          </header>
+          <main>{children}</main>
+          <footer className='min-[1800px]:border-t'>FOOTER</footer>
+        </div>
+      </ThemeProvider>
     </body>
   </html>
 );
