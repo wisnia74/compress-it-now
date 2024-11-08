@@ -1,5 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript", "prettier", "plugin:import/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:tailwindcss/recommended"
+  ],
   "plugins": ["simple-import-sort", "import", "unused-imports"],
   "rules": {
     "simple-import-sort/imports": "error",
