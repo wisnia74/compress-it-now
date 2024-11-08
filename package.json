@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev --turbopack",
     "lint": "next lint",
+    "lint:ci": "next lint --max-warnings 0",
     "lint:fix": "next lint --fix",
+    "lint:staged": "lint-staged",
     "prepare": "husky",
     "start": "next start"
   },
