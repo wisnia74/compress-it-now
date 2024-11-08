@@ -12,13 +12,21 @@ const filesToLint = async (files) => {
 
 export default {
   '*.{ts,tsx,js,jsx}': async (files) => {
-    const toLint = await filesToLint(files);
+    const filepaths = await filesToLint(files);
 
-    return toLint.length ? [`next lint --max-warnings 0 --fix ${toLint}`] : [SUCCESS];
+    if (!filepaths.length) {
+      return [SUCCESS];
+    }
+
+    return [`next lint --max-warnings 0 --fix ${filepaths}`];
   },
   '*.{json,css,scss,yml,yaml}': async (files) => {
-    const toLint = await filesToLint(files);
+    const filepaths = await filesToLint(files);
 
-    return toLint.length ? [`prettier --write ${await filesToLint(toLint)}`] : [SUCCESS];
+    if (!filepaths.length) {
+      return [SUCCESS];
+    }
+
+    return [`prettier --write ${filepaths}`];
   }
 };
