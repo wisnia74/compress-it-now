@@ -12,9 +12,9 @@ const filesToLint = async (files) => {
 
 export default {
   '*.{ts,tsx,js,jsx}': async (files) => {
-    return files.length ? [`next lint --max-warnings 0 --fix ${await filesToLint(files)}`] : [SUCESS];
+    return files.length ? [`next lint --max-warnings 0 --fix ${await filesToLint(files)}`] : [SUCCESS];
   },
   '*.{json,css,scss,yml,yaml}': async (files) => {
-    return files.length ? [`prettier --write ${await filesToLint(files)}`] : [SUCESS];
+    return files.length ? [`prettier --write ${await filesToLint(files)}`] : [SUCCESS];
   }
 };
